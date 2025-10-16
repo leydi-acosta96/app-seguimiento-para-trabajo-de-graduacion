@@ -1,1 +1,1 @@
-
+console.log("sript cargado");
