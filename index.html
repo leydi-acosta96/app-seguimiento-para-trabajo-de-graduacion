@@ -8,11 +8,79 @@
 </head>
 <body>
   <h1>Bienvenido al Sistema de Seguimiento del Proceso de Trabajo de Graduación</h1>
-  <p>Selecciona tu modalidad:</p>
-  <button onclick="alert('Tesis seleccionada')">Tesis</button>
+  <p>Registrate y Selecciona tu opción de traabajo de grado:</p>
+
+  
+  <!--> <button onclick="alert('Tesis seleccionada')">Tesis</button>
   <button onclick="alert('Práctica seleccionada')">Práctica Profesional</button>
   <button onclick="alert('Seminario seleccionado')">Seminario</button>
   <button onclick="alert('Seminario seleccionado')">Publicación de Artículo Cientifico</button>
+  <script src="script.js"></script> </!-->
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      padding: 30px;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #mensaje {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Registro de Estudiantes</h2>
+
+  <form id="registroForm">
+    <input type="text" id="id_estudiante" placeholder="id_estudiante" required>
+    <input type="text" id="nombre_estudiante" placeholder="nombre completo" required>
+    <input type="email" id="correo_estudiante" placeholder="Correo institucional" required>
+    <input type="tel" id="telefono_estudiante" placeholder="telefono" required>
+    
+
+    <select id="carrera" required>
+      <option value="">Selecciona tu carrera</option>
+    </select>
+
+    <select id="modalidad" required>
+      <option value="">Selecciona modalidad</option>
+      <option value="Tesis">Tesis</option>
+      <option value="Práctica">Práctica Profesional</option>
+      <option value="Seminario">Seminario</option>
+    </select>
+
+    <button type="submit">Registrar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
   <script src="script.js"></script>
 </body>
 </html>
