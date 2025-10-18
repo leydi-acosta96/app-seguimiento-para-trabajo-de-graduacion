@@ -17,11 +17,12 @@ document.getElementById("registroForm").addEventListener("submit", function (e) 
 // --- FUNCIÓN: Registrar nuevo estudiante ---
 async function registrarEstudiante() {
   const estudiante = {
-    nombre_estudiante: document.getElementById("nombre").value,
-    correo_estudiante: document.getElementById("correo").value,
-    telefono_estudiante: document.getElementById("telefono").value,
-    id_carrera: document.getElementById("carrera").value,
-    nombre_carrera: document.querySelector(#carrera option:checked).text,
+    id_estudiante: document.getElementById("id_estudiante").value,
+    nombre_estudiante: document.getElementById("nombre_estudiante").value,
+    correo_estudiante: document.getElementById("correo_estudiante").value,
+    telefono_estudiante: document.getElementById("telefono_estudiante").value,
+    id_carrera: document.getElementById("id_carrera").value,
+    nombre_carrera: document.querySelector(#carrera option:checked).textContent,
     modalidad: document.getElementById("modalidad").value,
     etapa_actual: "Inicio",
     progreso: 0,
@@ -29,7 +30,7 @@ async function registrarEstudiante() {
   };
 
   try {
-    const res = await fetch(ESTUDIANTES_ENDPOINT, {
+    const res = await fetch(estudiantes_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ estudiante })
