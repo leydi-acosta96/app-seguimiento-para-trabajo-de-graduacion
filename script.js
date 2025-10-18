@@ -9,7 +9,7 @@ const modalidad_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af8
 const comision_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/comision";
 
 // --- CAPTURA DE FORMULARIO ---
-document.getElementById("form-estudiante").addEventListener("submit", function (e) {
+document.getElementById("registroForm").addEventListener("submit", function (e) {
   e.preventDefault();
   registrarEstudiante();
 });
