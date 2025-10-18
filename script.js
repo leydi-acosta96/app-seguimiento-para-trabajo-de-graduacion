@@ -1,54 +1,42 @@
 console.log("sript cargado");
 // URLs de tu API Sheety
-const apiCarreras = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/carreras'";
-const apiEstudiantes = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes'";
+// --- CONEXIÓN CON GOOGLE SHEET ---
+const SHEET_URL = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg"; // tu endpoint generado con Sheety o Apps Script
+const ESTUDIANTES_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
 
-// 1️⃣ Cargar lista de carreras desde Google Sheets
-fetch(apiCarreras)
-  .then(response => response.json())
-  .then(data => {
-    const select = document.getElementById("carrera");
-    data.carreras.forEach(c => {
-      const option = document.createElement("option");
-      option.value = c.nombreCarrera;
-      option.textContent = c.nombreCarrera;
-      select.appendChild(option);
-    });
-  })
-  .catch(err => console.error("Error al cargar carreras:", err));
-
-// 2️⃣ Enviar formulario y registrar estudiante
-document.getElementById("registroForm").addEventListener("submit", function(e) {
+// --- CAPTURA DE FORMULARIO ---
+document.getElementById("form-estudiante").addEventListener("submit", function (e) {
   e.preventDefault();
-  
-  const id_estudiante = document.getElementById("nombre").value;
-  const nombre_estudiante= document.getElementById("nombre").value;
-  const correo_estudiante= document.getElementById("correo").value;
-  const nombre_carrera = document.getElementById("carrera").value;
-  const modalidad = document.getElementById("modalidad").value;
-
-  fetch(apiEstudiantes, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      estudiante: {
-        id_estudiante,
-        nombre_estudiante,
-        correo_estudiante,
-        nombre_carrera,
-        modalidad,
-        progreso: "0%",
-        etapaActual: "Inicio"
-      }
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("mensaje").textContent = "✅ Estudiante registrado con éxito.";
-    document.getElementById("registroForm").reset();
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    document.getElementById("mensaje").textContent = "❌ Error al registrar estudiante.";
-  });
+  registrarEstudiante();
 });
+
+// --- FUNCIÓN: Registrar nuevo estudiante ---
+async function registrarEstudiante() {
+  const estudiante = {
+    nombre_estudiante: document.getElementById("nombre").value,
+    correo_estudiante: document.getElementById("correo").value,
+    telefono_estudiante: document.getElementById("telefono").value,
+    id_carrera: document.getElementById("carrera").value,
+    nombre_carrera: document.querySelector(#carrera option:checked).text,
+    modalidad: document.getElementById("modalidad").value,
+    etapa_actual: "Inicio",
+    progreso: 0,
+    documentos: ""
+  };
+
+  try {
+    const res = await fetch(ESTUDIANTES_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ estudiante })
+    });
+    if (res.ok) {
+      alert("✅ Estudiante registrado con éxito.");
+      document.getElementById("form-estudiante").reset();
+    } else {
+      alert("⚠️ Error al registrar estudiante.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
