@@ -2,7 +2,11 @@ console.log("sript cargado");
 // URLs de tu API Sheety
 // --- CONEXIÓN CON GOOGLE SHEET ---
 const SHEET_URL = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg"; // tu endpoint generado con Sheety o Apps Script
-const ESTUDIANTES_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
+const estudiantes_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
+const asesores_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/asesores";
+const fase_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/fase";
+const modalidad_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/modalidad";
+const comision_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/comision";
 
 // --- CAPTURA DE FORMULARIO ---
 document.getElementById("form-estudiante").addEventListener("submit", function (e) {
