@@ -1,16 +1,13 @@
 console.log("✅ Script cargado correctamente");
 
-// --- URL de tu API Sheety ---
-const estudiantes_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
+// ✅ Endpoint exacto de tu hoja “estudiantes”
+const ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
 
-// --- CAPTURA DEL FORMULARIO ---
-document.getElementById("registroForm").addEventListener("submit", function (e) {
+// Captura del formulario
+document.getElementById("registroForm").addEventListener("submit", async function (e) {
   e.preventDefault();
-  registrarEstudiante();
-});
 
-// --- FUNCIÓN PARA REGISTRAR UN ESTUDIANTE ---
-async function registrarEstudiante() {
+  // Datos del formulario
   const estudiante = {
     id_estudiante: document.getElementById("id_estudiante").value,
     nombre_estudiante: document.getElementById("nombre_estudiante").value,
@@ -23,23 +20,27 @@ async function registrarEstudiante() {
     documentos: ""
   };
 
+  console.log("📤 Enviando datos:", estudiante);
+
   try {
-    const res = await fetch(estudiantes_ENDPOINT, {
+    // 👇 Aquí está el cambio importante (singular)
+    const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // 👇 El objeto raíz debe coincidir con el nombre de la hoja
-      body: JSON.stringify({ estudiantes: estudiante })
+      body: JSON.stringify({ estudiante }) 
     });
+
+    const data = await res.json();
+    console.log("📥 Respuesta de Sheety:", data);
 
     if (res.ok) {
       alert("✅ Estudiante registrado con éxito.");
       document.getElementById("registroForm").reset();
     } else {
-      const errorText = await res.text();
-      console.error("⚠️ Error en respuesta:", errorText);
-      alert("❌ Error al registrar estudiante. Revisa la consola (F12).");
+      alert("⚠️ Error al registrar estudiante: " + JSON.stringify(data));
     }
   } catch (error) {
     console.error("🚨 Error de conexión:", error);
-    alert("❌ No se pudo conectar con Sheety. Revisa tu endpoint o conexión.");
+    alert("No se pudo conectar con Sheety. Revisa la consola (F12).");
   }
+});
