@@ -3,20 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>Seguimiento Graduación</title>
-</head>
-<body>
-  <h1>Bienvenido al Sistema de Seguimiento del Proceso de Trabajo de Graduación</h1>
-  <p>Registrate y Selecciona tu opción de traabajo de grado:</p>
-
-  
-  <!-- <button onclick="alert('Tesis seleccionada')">Tesis</button>
-  <button onclick="alert('Práctica seleccionada')">Práctica Profesional</button>
-  <button onclick="alert('Seminario seleccionado')">Seminario</button>
-  <button onclick="alert('Seminario seleccionado')">Publicación de Artículo Cientifico</button>
-  <script src="script.js"></script> -->
-
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -56,30 +44,30 @@
 </head>
 <body>
 
+  <h1>Bienvenido al Sistema de Seguimiento del Proceso de Graduación</h1>
+  <p>Regístrate y selecciona tu opción de trabajo de grado:</p>
+
   <h2>Registro de Estudiantes</h2>
 
   <form id="registroForm">
-    <input type="text" id="id_estudiante" placeholder="id_estudiante" required>
-    <input type="text" id="nombre_estudiante" placeholder="nombre completo" required>
+    <input type="text" id="id_estudiante" placeholder="ID Estudiante" required>
+    <input type="text" id="nombre_estudiante" placeholder="Nombre completo" required>
     <input type="email" id="correo_estudiante" placeholder="Correo institucional" required>
-    <input type="tel" id="telefono_estudiante" placeholder="telefono" required>
-    
+    <input type="tel" id="telefono_estudiante" placeholder="Teléfono" required>
 
     <select id="nombre_carrera" required>
       <option value="">Selecciona tu carrera</option>
-        <option value="">Selecciona modalidad</option>
-        <option value="101">Licenciatura en Ingeniería en Informática.</option>
-        <option value="102">Licenciatura en Ingeniería Electrónica y Comunicación.</option>
-        <option value="103">Licenciatura en Gerencia de Comercio Electrónico.</option>
-        <option value="104">Licenciatura en Desarrollo de Aplicaciones Tecnológicas.</option>
-        <option value="105">Licenciatura en Ingeniería Mecatrónica.</option>
-        <option value="106">Licenciatura en Ciencia de Datos.</option>
-        <option value="107">Tecnico en Seguridad e informatica forense</option>
-        <option value="108">Licenciatura en ingenieria de internet de las cosas</option>
-        <option value="109">Tecnico en Informatica Educativa</option>
-        <option value="110">Licenciatura en Informática para la Gestión Educativa y Empresarial</option>
-        <option value="111">Licenciatura en Ciberseguridad de las Tecnologías de la Información</option>
-        
+      <option value="101">Lic. en Ingeniería en Informática</option>
+      <option value="102">Lic. en Ingeniería Electrónica y Comunicación</option>
+      <option value="103">Lic. en Gerencia de Comercio Electrónico</option>
+      <option value="104">Lic. en Desarrollo de Aplicaciones Tecnológicas</option>
+      <option value="105">Lic. en Ingeniería Mecatrónica</option>
+      <option value="106">Lic. en Ciencia de Datos</option>
+      <option value="107">Técnico en Seguridad e Informática Forense</option>
+      <option value="108">Lic. en Ingeniería de Internet de las Cosas</option>
+      <option value="109">Técnico en Informática Educativa</option>
+      <option value="110">Lic. en Informática para la Gestión Educativa y Empresarial</option>
+      <option value="111">Lic. en Ciberseguridad</option>
     </select>
 
     <select id="nombre_modalidad" required>
@@ -87,7 +75,7 @@
       <option value="Tesis">Tesis</option>
       <option value="Práctica">Práctica Profesional</option>
       <option value="Seminario">Seminario</option>
-      <option value="Seminario">Publicaión de Artículo Científico</option>
+      <option value="Publicación">Publicación de Artículo Científico</option>
     </select>
 
     <button type="submit">Registrar</button>
