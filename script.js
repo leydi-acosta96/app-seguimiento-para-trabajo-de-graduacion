@@ -1,13 +1,10 @@
 console.log("✅ Script cargado correctamente");
 
-// ✅ Endpoint exacto de tu hoja “estudiantes”
-const ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwUbS61rf4IGws2FKaDFZyp7QsFhmdFVzfJyRtE4LsuMRgVpetd0DuoHOx-hq3HRLkX/exec"; // URL que copiaste
 
-// Captura del formulario
-document.getElementById("registroForm").addEventListener("submit", async function (e) {
+document.getElementById("registroForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Datos del formulario
   const estudiante = {
     id_estudiante: document.getElementById("id_estudiante").value,
     nombre_estudiante: document.getElementById("nombre_estudiante").value,
@@ -20,27 +17,16 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     documentos: ""
   };
 
-  console.log("📤 Enviando datos:", estudiante);
-
   try {
-    // 👇 Aquí está el cambio importante (singular)
-    const res = await fetch(ENDPOINT, {
+    const res = await fetch(SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ estudiante }) 
+      body: JSON.stringify({ estudiante })
     });
-
     const data = await res.json();
-    console.log("📥 Respuesta de Sheety:", data);
-
-    if (res.ok) {
-      alert("✅ Estudiante registrado con éxito.");
-      document.getElementById("registroForm").reset();
-    } else {
-      alert("⚠️ Error al registrar estudiante: " + JSON.stringify(data));
-    }
-  } catch (error) {
-    console.error("🚨 Error de conexión:", error);
-    alert("No se pudo conectar con Sheety. Revisa la consola (F12).");
+    document.getElementById("mensaje").textContent = "✅ " + data.message;
+    document.getElementById("registroForm").reset();
+  } catch (err) {
+    console.error(err);
+    document.getElementById("mensaje").textContent = "⚠️ Error al enviar los datos.";
   }
 });
