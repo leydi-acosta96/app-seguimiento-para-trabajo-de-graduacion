@@ -1,12 +1,7 @@
-console.log("sript cargado");
-// URLs de tu API Sheety
+onsole.log("Script cargado correctamente ✅");
+
 // --- CONEXIÓN CON GOOGLE SHEET ---
-const SHEET_URL = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg"; // tu endpoint generado con Sheety o Apps Script
-const estudiantes_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
-const asesores_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/asesores";
-const fase_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/fase";
-const modalidad_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/modalidad";
-const comision_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/comision";
+const ESTUDIANTES_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
 
 // --- CAPTURA DE FORMULARIO ---
 document.getElementById("registroForm").addEventListener("submit", function (e) {
@@ -29,18 +24,22 @@ async function registrarEstudiante() {
   };
 
   try {
-    const res = await fetch(estudiantes_ENDPOINT, {
+    const res = await fetch(ESTUDIANTES_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ estudiante })
+      body: JSON.stringify({ estudiante }) // ← IMPORTANTE: objeto raíz debe coincidir con tu hoja
     });
+
     if (res.ok) {
-      alert("✅ Estudiante registrado con éxito.");
-      document.getElementById("form-estudiante").reset();
+      document.getElementById("mensaje").innerText = "✅ Estudiante registrado con éxito.";
+      document.getElementById("registroForm").reset();
     } else {
-      alert("⚠️ Error al registrar estudiante.");
+      const errorText = await res.text();
+      console.error("Error al registrar:", errorText);
+      document.getElementById("mensaje").innerText = "⚠️ Error al registrar estudiante.";
     }
   } catch (error) {
     console.error("Error:", error);
+    document.getElementById("mensaje").innerText = "❌ Error de conexión.";
   }
 }
