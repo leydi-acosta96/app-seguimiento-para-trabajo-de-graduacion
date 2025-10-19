@@ -22,8 +22,8 @@ async function registrarEstudiante() {
     correo_estudiante: document.getElementById("correo_estudiante").value,
     telefono_estudiante: document.getElementById("telefono_estudiante").value,
     id_carrera: document.getElementById("id_carrera").value,
-    nombre_carrera: document.querySelector(#carrera option:checked).textContent,
-    modalidad: document.getElementById("modalidad").value,
+    nombre_carrera: document.querySelector(#nombre_carrera option:checked).textContent,
+    nombre_modalidad: document.getElementById("nombre_modalidad").value,
     etapa_actual: "Inicio",
     progreso: 0,
     documentos: ""
