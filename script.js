@@ -1,7 +1,7 @@
-onsole.log("Script cargado correctamente ✅");
+console.log("Script cargado correctamente ✅");
 
 // --- CONEXIÓN CON GOOGLE SHEET ---
-const ESTUDIANTES_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
+const estudiantes_ENDPOINT = "https://api.sheety.co/301327363ae1c8d017800bb4566af87c/bdAppTdg/estudiantes";
 
 // --- CAPTURA DE FORMULARIO ---
 document.getElementById("registroForm").addEventListener("submit", function (e) {
@@ -11,7 +11,7 @@ document.getElementById("registroForm").addEventListener("submit", function (e) 
 
 // --- FUNCIÓN: Registrar nuevo estudiante ---
 async function registrarEstudiante() {
-  const estudiante = {
+  const estudiantes = {
     id_estudiante: document.getElementById("id_estudiante").value,
     nombre_estudiante: document.getElementById("nombre_estudiante").value,
     correo_estudiante: document.getElementById("correo_estudiante").value,
@@ -24,7 +24,7 @@ async function registrarEstudiante() {
   };
 
   try {
-    const res = await fetch(ESTUDIANTES_ENDPOINT, {
+    const res = await fetch(estudiantes_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ estudiante }) // ← IMPORTANTE: objeto raíz debe coincidir con tu hoja
