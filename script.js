@@ -29,4 +29,16 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
     console.error(err);
     document.getElementById("mensaje").textContent = "⚠️ Error al enviar los datos.";
   }
+  
+      const modalidad = estudiante.nombre_modalidad.toLowerCase();
+    
+        if (modalidad.includes("tesis")) {
+          window.location.href = "tesis.html";
+        } else if (modalidad.includes("práctica")) {
+          window.location.href = "practica.html";
+        } else if (modalidad.includes("seminario")) {
+          window.location.href = "seminario.html";
+        } else {
+          alert("Modalidad no reconocida. Contacte a la administración.");
+    }
 });
