@@ -40,5 +40,5 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
           window.location.href = "seminario.html";
         } else {
           alert("Modalidad no reconocida. Contacte a la administración.");
-    }
+    
 });
