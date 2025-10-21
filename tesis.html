@@ -2,19 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Tesis</title>
+  <title>Subida de Documentos - Tesis</title>
 </head>
 <body>
-  <h1>Tesis como opción de Trabajo de Grado</h1>
-  <h2>FASE 1</h2>
-  <p>Adjuntar la siguiente documentación</p>
-  <p>Instrucciones</p>
-  <button onclick="alert('instrucciones')">instrucciones</button>
-  <button onclick="alert('')">Práctica Profesional</button>
-  <button onclick="alert('Seminario seleccionado')">Seminario</button>
-  <button onclick="alert('Seminario seleccionado')">Publicación de Artículo Cientifico</button>
-  <script src="script.js"></script>
+  <h2>Subida de documentos para Tesis</h2>
+
+  <form id="formTesis">
+    <label>Anteproyecto (PDF):</label>
+    <input type="file" id="anteproyecto" accept=".pdf" required><br><br>
+
+    <label>Carta de Aceptación:</label>
+    <input type="file" id="carta" accept=".pdf" required><br><br>
+
+    <button type="submit">Subir documentos</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+  <script src="tesis.js"></script>
 </body>
 </html>
